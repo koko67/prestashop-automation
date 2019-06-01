@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.testng.Assert;
 import ui.PageTransporter;
 import ui.web.pages.MainWebPage;
 
@@ -38,7 +39,9 @@ public class SearchSteps {
         mainWebPage.clickSearchButton();
     }
 
-    @Then("^A search result should be displayed in search panel$")
-    public void aSearchResultShouldBeDisplayedInSearchPanel() {
+    @Then("^A search result with the name \"([^\"]*)\" should be displayed in search panel$")
+    public void aSearchResultWithTheNameShouldBeDisplayedInSearchPanel(String text) throws Throwable {
+        boolean exist = mainWebPage.existResultSearchElementByText(text);
+        Assert.assertTrue(exist);
     }
 }

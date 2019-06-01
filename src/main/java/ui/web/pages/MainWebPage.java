@@ -18,7 +18,8 @@ public class MainWebPage extends BasePageObject {
     @FindBy(xpath = "//*[@id=\"search_widget\"]/form/button")
     WebElement searchButton;
 
-    WebElement frame;
+    @FindBy(id = "content-wrapper")
+    WebElement resultPane;
 
     public MainWebPage() throws InterruptedException {
         waitUntilPageObjectIsLoaded();
@@ -59,5 +60,9 @@ public class MainWebPage extends BasePageObject {
         return this;
     }
 
-
+    public boolean existResultSearchElementByText(String text){
+        By result = By.xpath("//article//h2//a[contains(text(), 'Hummingbird printed t-shirt')]");
+        String resultText = resultPane.findElement(result).getText();
+        return resultText != null;
+    }
 }
