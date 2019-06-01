@@ -65,4 +65,28 @@ public class MainWebPage extends BasePageObject {
         String resultText = resultPane.findElement(result).getText();
         return resultText != null;
     }
+
+    public MainWebPage clickEmailAddressSubscribe() {
+        By emailAddresInput = By.name("email");
+        driver.findElement(emailAddresInput).click();
+        return this;
+    }
+
+    public MainWebPage typeEmailAddresSubscribe(String arg0) {
+        By emailAddresInput = By.name("email");
+        driver.findElement(emailAddresInput).sendKeys(arg0);
+        return this;
+    }
+
+    public void clickSubscribeNewlettersButton() {
+        By subscribeButton = By.name("submitNewsletter");
+        driver.findElement(subscribeButton).click();
+    }
+
+    public boolean isMessageDisplayed(String message) {
+        By messageLocator = By.xpath("//footer[@id='footer']//p[contains(text(), '" + message + "')]");
+        String displayedMessage = driver.findElement(messageLocator).getText();
+        boolean isDisplayed = displayedMessage.contains(message);
+        return false;
+    }
 }

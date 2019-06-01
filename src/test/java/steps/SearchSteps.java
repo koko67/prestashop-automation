@@ -44,4 +44,16 @@ public class SearchSteps {
         boolean exist = mainWebPage.existResultSearchElementByText(text);
         Assert.assertTrue(exist);
     }
+
+    @When("^I subscribe to newsletter with email \"([^\"]*)\"$")
+    public void iSubscribeToNewsletterWithEmail(String arg0) throws Throwable {
+        mainWebPage.clickEmailAddressSubscribe()
+                .typeEmailAddresSubscribe(arg0)
+                .clickSubscribeNewlettersButton();
+    }
+
+    @Then("^the message \"([^\"]*)\" should be displayed$")
+    public void theMessageShouldBeDisplayed(String arg0) throws Throwable {
+        boolean isSuccessMessage = mainWebPage.isMessageDisplayed(arg0);
+    }
 }

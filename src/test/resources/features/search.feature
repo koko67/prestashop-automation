@@ -17,14 +17,7 @@ Feature: Search
 
 
   @Search
-  Scenario Outline: Search implementation for something
+  Scenario: Subscribe email to newsletter
     Given I navigate to Prestashop page
-    When I click the search area
-    And I type the text "<SearchCriteria>"
-    And I click the search button
-    Then the message
-
-    Examples:
-      | SearchCriteria              |
-      | Hummingbird printed t-shirt |
-      | The best is yet to come     |
+    When I subscribe to newsletter with email "jorge@mail.com"
+    Then the message "You have successfully subscribed to this newsletter." should be displayed
