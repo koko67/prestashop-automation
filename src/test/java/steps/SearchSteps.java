@@ -1,5 +1,6 @@
 package steps;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -23,6 +24,11 @@ public class SearchSteps {
         mainWebPage = pageTransporter.navigateToMainWebPage("http://demo.prestashop.com/en/?view=front");
     }
 
+    @When("^I click on Sign In button$")
+    public void iClickOnSignInButton() throws Throwable {
+        mainWebPage.clickSignInButton();
+    }
+
     @When("^I click the search area$")
     public void iClickTheSearchArea() throws Throwable {
         mainWebPage.clickSearchInput();
@@ -42,7 +48,7 @@ public class SearchSteps {
     @Then("^A search result with the name \"([^\"]*)\" should be displayed in search panel$")
     public void aSearchResultWithTheNameShouldBeDisplayedInSearchPanel(String text) throws Throwable {
         boolean exist = mainWebPage.existResultSearchElementByText(text);
-        Assert.assertTrue(exist);
+        Assert.assertTrue(false);
     }
 
     @When("^I subscribe to newsletter with email \"([^\"]*)\"$")
@@ -56,4 +62,6 @@ public class SearchSteps {
     public void theMessageShouldBeDisplayed(String arg0) throws Throwable {
         boolean isSuccessMessage = mainWebPage.isMessageDisplayed(arg0);
     }
+
+
 }

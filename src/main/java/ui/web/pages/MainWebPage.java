@@ -21,12 +21,20 @@ public class MainWebPage extends BasePageObject {
     @FindBy(id = "content-wrapper")
     WebElement resultPane;
 
+    @FindBy(xpath = "//*[@id=\"_desktop_user_info\"]/div/a/span")
+    WebElement SignInButton;
+
     public MainWebPage() throws InterruptedException {
         waitUntilPageObjectIsLoaded();
         PageFactory.initElements(driver, this);
 //        driver.switchTo().frame(frame);
 //        searchInput = driver.findElement(By.xpath("//*[@id=\"search_widget\"]/form/input[2]"));
 //        searchButton = driver.findElement(By.xpath("//*[@id=\\\"search_widget\\\"]/form/button"));
+    }
+
+    public LoginPage clickSignInButton() throws InterruptedException {
+        SignInButton.click();
+        return new LoginPage();
     }
 
     @Override

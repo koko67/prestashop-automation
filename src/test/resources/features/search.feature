@@ -19,5 +19,7 @@ Feature: Search
   @Search
   Scenario: Subscribe email to newsletter
     Given I navigate to Prestashop page
-    When I subscribe to newsletter with email "jorge@mail.com"
+    When I subscribe to newsletter with email "jorge@maill.com"
     Then the message "You have successfully subscribed to this newsletter." should be displayed
+
+    
